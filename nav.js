@@ -27,7 +27,7 @@
       <a href="${root}club.html">AI Club</a>
       <a href="${root}resources.html">Resources</a>
       <a href="${root}contact.html">Contact</a>
-      <a href="https://linkedin.com/in/leobouchon" target="_blank">LinkedIn ↗</a>
+      <a href="https://www.linkedin.com/in/lbouchon/" target="_blank">LinkedIn ↗</a>
       <a href="https://github.com/leobouchon" target="_blank">GitHub ↗</a>
     </div>
     <p>© 2026 Leo Bouchon · Monta Vista High School · Stanford AIMI Intern</p>
