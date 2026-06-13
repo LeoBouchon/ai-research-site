@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Leo Bouchon</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<script src="nav.js"></script>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">Blog &amp; Updates</p>
+    <h1>Notes from the Lab</h1>
+    <p>Research reflections, club session recaps, and things I'm learning along the way.</p>
+  </div>
+</section>
+
+<div class="main-content">
+  <p style="color: var(--text-muted); margin-bottom: 48px;">
+    This is where I write about what I'm working on — new model experiments, things that didn't work and why, session takeaways from the AI Club, and papers I've found interesting. Updated irregularly but honestly.
+  </p>
+
+  <!-- PLACEHOLDER POSTS -->
+  <div style="display: flex; flex-direction: column; gap: 32px;">
+
+    <div class="card" style="opacity: 0.55;">
+      <p class="card-eyebrow">Coming Soon</p>
+      <h3 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--navy); margin-bottom: 8px;">First post coming after our first AI Club session</h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted);">I'll recap what we covered, what questions came up, and what I'd do differently next time.</p>
+    </div>
+
+    <div class="card" style="opacity: 0.55;">
+      <p class="card-eyebrow">Coming Soon</p>
+      <h3 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--navy); margin-bottom: 8px;">Why AUROC is the right metric for medical AI (and when it isn't)</h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted);">A closer look at why we chose AUROC over accuracy for the CheXpert project, and the edge cases where it can be misleading.</p>
+    </div>
+
+    <div class="card" style="opacity: 0.55;">
+      <p class="card-eyebrow">Coming Soon</p>
+      <h3 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--navy); margin-bottom: 8px;">What I learned building my first early stopping implementation</h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted);">The decision to stop on AUROC rather than loss, what happened when I first tested it, and the subtle bugs that took time to track down.</p>
+    </div>
+
+  </div>
+
+  <div class="info-box" style="margin-top: 48px;">
+    Want to be notified when new posts go up? <a href="contact.html" style="color: var(--accent);">Drop me an email</a> and I'll add you to the list.
+  </div>
+</div>
+
+</body>
+</html>

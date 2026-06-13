@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lung Pathology Detection — Leo Bouchon</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+<script src="../nav.js"></script>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">Research · Project 1</p>
+    <h1>Multi-Disease Lung Pathology Detection</h1>
+    <p>DenseNet121 classifier for simultaneous detection of 5 thoracic conditions from chest X-rays.</p>
+    <div style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+      <span class="badge badge-complete" style="margin: 0;">Completed</span>
+      <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--ice-dim);">Stanford AIMI Internship · 2025–2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="main-content">
+  <a href="../research.html" class="back-link">← Back to Research</a>
+
+  <!-- METRICS BAR -->
+  <div class="metrics-bar">
+    <div class="metric-item">
+      <span class="metric-val">0.9011</span>
+      <span class="metric-label">Mean Validation AUROC</span>
+    </div>
+    <div class="metric-item">
+      <span class="metric-val">0.8108</span>
+      <span class="metric-label">Mean Sensitivity</span>
+    </div>
+    <div class="metric-item">
+      <span class="metric-val">0.8060</span>
+      <span class="metric-label">Mean Specificity</span>
+    </div>
+    <div class="metric-item">
+      <span class="metric-val">223K</span>
+      <span class="metric-label">Radiographs</span>
+    </div>
+    <div class="metric-item">
+      <span class="metric-val">5</span>
+      <span class="metric-label">Pathologies</span>
+    </div>
+  </div>
+
+  <!-- CLINICAL BACKGROUND -->
+  <div class="content-section">
+    <h2>Clinical Background</h2>
+    <p>
+      Thoracic diseases are among the most prevalent and high-stakes conditions in emergency and primary care. Conditions such as pneumonia, pulmonary edema, and pleural effusion can be life-threatening if missed, yet many share overlapping symptoms — shortness of breath, fever, chest discomfort — that make bedside differentiation unreliable.
+    </p>
+    <p>
+      Chest radiography remains the most widely used first-line imaging tool for thoracic disease, but radiologist availability is a bottleneck in high-volume settings. An AI screening assistant capable of simultaneously flagging multiple pathologies from a single X-ray could help triage patients more effectively and reduce diagnostic delay.
+    </p>
+    <p>
+      This project addresses that challenge directly: building a multi-label deep learning classifier capable of detecting 5 distinct thoracic conditions from a single chest radiograph with clinically meaningful sensitivity and specificity.
+    </p>
+  </div>
+
+  <!-- DATASET -->
+  <div class="content-section">
+    <h2>Dataset</h2>
+    <p>
+      <strong>CheXpert Plus</strong> (Stanford AIMI, 2026) is one of the largest publicly available chest radiograph datasets, comprising 223,462 radiographs from 187,711 studies across 64,725 patients. The dataset provides labels for 14 pathologies derived from radiology reports using automated NLP labeling.
+    </p>
+
+    <div class="info-box">
+      <strong>Label uncertainty challenge:</strong> CheXpert's automated labeling pipeline produces three label states — positive (1), negative (0), and uncertain (u). Uncertain labels represent cases where the radiologist report was ambiguous. Handling these correctly is critical to model performance.
+    </div>
+
+    <p>
+      <strong>Preprocessing — U-Ones policy:</strong> Uncertain labels were mapped to positive (1), and missing labels to negative (0). This conservative approach reduces false negatives, which is preferable in a clinical screening context where missing a disease is more costly than a false alarm.
+    </p>
+
+    <p><strong>Train / Validation / Test Split:</strong></p>
+    <ul>
+      <li>Training: 70%</li>
+      <li>Validation: 15%</li>
+      <li>Test: 15%</li>
+    </ul>
+
+    <p><strong>Augmentation:</strong> Random horizontal flips and color jitter were applied during training to improve generalization and reduce overfitting. Low-quality and blurry images were filtered from the dataset prior to training. Images were uniformly resized for network input.</p>
+
+    <p><strong>Pathologies detected (5-class multi-label):</strong></p>
+    <div class="tags">
+      <span class="tag">Atelectasis</span>
+      <span class="tag">Cardiomegaly</span>
+      <span class="tag">Consolidation</span>
+      <span class="tag">Edema</span>
+      <span class="tag">Pleural Effusion</span>
+    </div>
+  </div>
+
+  <!-- MODEL ARCHITECTURE -->
+  <div class="content-section">
+    <h2>Model Architecture</h2>
+    <p>
+      I selected <strong>DenseNet121</strong> as the backbone for this classifier. DenseNet (Densely Connected Convolutional Network) uses a unique architectural principle where each layer receives feature maps from all preceding layers via dense blocks connected by transition layers. This dense connectivity encourages feature reuse, reduces vanishing gradients, and substantially reduces the number of parameters compared to equivalent ResNet architectures.
+    </p>
+    <p>
+      DenseNet121 has been widely validated for chest X-ray classification tasks (notably in the original CheXNet paper from Stanford), making it a well-motivated choice for this dataset.
+    </p>
+    <p>
+      The model was configured for multi-label classification with a sigmoid output layer (one sigmoid unit per pathology class), allowing independent probability estimates for each condition from a single forward pass.
+    </p>
+    <p>
+      <strong>Weights:</strong> The model was initialized with ImageNet-pretrained weights, which provide strong low-level feature representations (edges, textures, shapes) that transfer effectively to medical imaging tasks — reducing overfitting on the label-noisy portions of the dataset.
+    </p>
+    <div class="tags">
+      <span class="tag">DenseNet121</span>
+      <span class="tag">ImageNet Pretrained</span>
+      <span class="tag">Multi-label Sigmoid Output</span>
+      <span class="tag">Dense Blocks</span>
+      <span class="tag">Transition Layers</span>
+    </div>
+  </div>
+
+  <!-- TRAINING -->
+  <div class="content-section">
+    <h2>Training &amp; Methodology</h2>
+
+    <p><strong>Loss function:</strong> Binary Cross-Entropy (BCE) with logits, applied independently to each of the 5 output classes. A masked average loss was used to handle missing labels without penalizing the model for conditions not documented in a given study.</p>
+
+    <p><strong>Optimizer:</strong> Adam with an initial learning rate of 0.0001.</p>
+
+    <p><strong>Learning rate schedule:</strong> Reduce on Plateau — the learning rate was automatically reduced when validation loss stopped improving, allowing the model to converge more precisely in later training stages.</p>
+
+    <p>
+      <strong>Early stopping (custom implementation):</strong> Rather than training for a fixed number of epochs, I implemented a custom early stopping rule based on the validation AUROC rather than validation loss. Training was halted automatically after <strong>3 consecutive epochs where AUROC did not improve</strong> beyond the current best. This approach:
+    </p>
+    <ul>
+      <li>Prevents overfitting more precisely than loss-based stopping, since AUROC directly measures discriminative performance</li>
+      <li>Eliminates the need to manually tune epoch count — the model runs until it converges</li>
+      <li>Saved compute by terminating runs that had plateaued</li>
+    </ul>
+
+    <p><strong>Hardware/environment:</strong> [Add your training environment here — e.g., Google Colab Pro, local GPU, Stanford compute cluster]</p>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="content-section">
+    <h2>Results</h2>
+
+    <p>The DenseNet121 model achieved a mean validation AUROC of <strong>0.9011</strong>, representing a 13.32% improvement over the DenseNet121 baseline (0.7952). Mean sensitivity improved by 13.57% and mean specificity by 13.52%.</p>
+
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Mean Validation AUROC</th>
+          <th>Mean Sensitivity</th>
+          <th>Mean Specificity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Baseline DenseNet121</td>
+          <td class="auc-highlight">0.7952</td>
+          <td>0.7139</td>
+          <td>0.7100</td>
+        </tr>
+        <tr>
+          <td><strong>DenseNet121 (This Model)</strong></td>
+          <td class="auc-highlight" style="color: var(--success); font-size: 1.05rem;">0.9011 (+13.32%)</td>
+          <td>0.8108 (+13.57%)</td>
+          <td>0.8060 (+13.52%)</td>
+        </tr>
+        <tr>
+          <td>Baseline EfficientNetB0 (teammates)</td>
+          <td class="auc-highlight">0.7948</td>
+          <td>0.7536</td>
+          <td>0.7017</td>
+        </tr>
+        <tr>
+          <td>EfficientNetB0 with CBAM (teammates)</td>
+          <td class="auc-highlight">0.8530 (+7.32%)</td>
+          <td>0.7801 (+3.52%)</td>
+          <td>0.8198 (+16.83%)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <strong>Individual pathology AUROC scores</strong> are available in the full research poster below. DenseNet121 outperformed EfficientNetB0 on mean AUROC, while EfficientNetB0 showed stronger improvements in specificity — suggesting the two architectures have complementary strengths that a hybrid approach could exploit.
+    </div>
+
+    <p style="margin-top: 20px;"><strong>Research Poster:</strong></p>
+    <div class="poster-frame">
+      <embed src="../../AIMI__Group_3_-_Poster.pdf" type="application/pdf" />
+    </div>
+    <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 8px;">
+      If the PDF doesn't render above, <a href="../../AIMI__Group_3_-_Poster.pdf" target="_blank" style="color: var(--accent);">open it here ↗</a>
+    </p>
+  </div>
+
+  <!-- LIMITATIONS -->
+  <div class="content-section">
+    <h2>Limitations &amp; Honest Reflection</h2>
+    <p>
+      Despite strong aggregate metrics, several meaningful limitations remain:
+    </p>
+    <ul>
+      <li><strong>Visually similar pathologies:</strong> Both DenseNet121 and EfficientNetB0 struggled to distinguish between pathologies with overlapping radiographic appearances — notably Consolidation vs. Atelectasis, and Edema vs. Pleural Effusion. These remain the lowest individual-class AUROC scores.</li>
+      <li><strong>Label noise:</strong> CheXpert's NLP-derived labels contain inherent noise. The U-Ones mapping addresses uncertainty conservatively but introduces false positives in pathologies where uncertain labels are common.</li>
+      <li><strong>Dataset bias:</strong> CheXpert Plus is drawn from a single health system (Stanford). Model generalization to populations with different imaging protocols, equipment, or disease prevalence distributions has not been validated.</li>
+      <li><strong>No Grad-CAM validation yet:</strong> Visual inspection of attention maps to confirm the model focuses on clinically relevant regions (rather than spurious correlations) is planned but not yet completed.</li>
+      <li><strong>Class imbalance:</strong> Some pathologies appear far less frequently than others, which can bias the model toward common conditions. Weighted loss functions or oversampling strategies could mitigate this.</li>
+    </ul>
+  </div>
+
+  <!-- NEXT STEPS -->
+  <div class="content-section">
+    <h2>Next Steps</h2>
+    <ul>
+      <li>Implement Grad-CAM visualizations to inspect model attention and validate clinical plausibility of predictions</li>
+      <li>Explore ensemble methods combining DenseNet121 and EfficientNetB0 to leverage complementary strengths</li>
+      <li>Investigate weighted BCE loss to improve performance on minority pathology classes</li>
+      <li>Extend evaluation to the held-out test set and compare against published CheXpert benchmark results</li>
+      <li>Explore 14-class full CheXpert label set rather than the 5-class subset</li>
+    </ul>
+  </div>
+
+  <!-- PREV / NEXT -->
+  <div class="prev-next">
+    <div></div>
+    <a href="ai-pathology.html">
+      <span class="pn-label">Next Project →</span>
+      <span class="pn-title">AI Pathology Detection — Next Generation</span>
+    </a>
+  </div>
+</div>
+
+</body>
+</html>

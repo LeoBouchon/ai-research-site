@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources — Leo Bouchon</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<script src="nav.js"></script>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">Learning Hub</p>
+    <h1>Resources</h1>
+    <p>Curated reading, courses, tools, and datasets for learning AI and medical imaging — organized by topic and skill level.</p>
+  </div>
+</section>
+
+<div class="main-content">
+  <p style="color: var(--text-muted); margin-bottom: 48px; max-width: 640px;">
+    These are the resources I've actually used — not a generic list. Each one either helped me build something or changed how I think about a problem. I'll keep adding to this as the AI Club sessions develop.
+  </p>
+
+  <!-- GETTING STARTED -->
+  <div class="resource-group">
+    <h3>Getting Started with ML</h3>
+
+    <div class="resource-item">
+      <div class="resource-icon">🎓</div>
+      <div>
+        <h4>Supervised Machine Learning — Andrew Ng (Coursera)</h4>
+        <p>The best introduction to ML I've found. Covers regression, classification, gradient descent, and regularization with clear math and strong intuitions. The course I completed through Stanford Online.</p>
+        <a href="https://www.coursera.org/learn/machine-learning" target="_blank">coursera.org ↗</a>
+      </div>
+    </div>
+
+    <div class="resource-item">
+      <div class="resource-icon">📘</div>
+      <div>
+        <h4>fast.ai — Practical Deep Learning for Coders</h4>
+        <p>A top-down approach that gets you training real models immediately before diving into theory. Excellent for building intuition fast.</p>
+        <a href="https://course.fast.ai" target="_blank">course.fast.ai ↗</a>
+      </div>
+    </div>
+
+    <div class="resource-item">
+      <div class="resource-icon">▶️</div>
+      <div>
+        <h4>3Blue1Brown — Neural Networks (YouTube)</h4>
+        <p>The clearest visual explanation of how neural networks and backpropagation work. Watch this before anything else if you're new to the concept.</p>
+        <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" target="_blank">YouTube ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CNNs & VISION -->
+  <div class="resource-group">
+    <h3>Convolutional Networks &amp; Computer Vision</h3>
+
+    <div class="resource-item">
+      <div class="resource-icon">📄</div>
+      <div>
+        <h4>Densely Connected Convolutional Networks (DenseNet Paper)</h4>
+        <p>Huang et al., 2017. The original DenseNet paper — readable and well-structured. Essential reading for understanding why dense connectivity helps.</p>
+        <a href="https://arxiv.org/abs/1608.06993" target="_blank">arxiv.org ↗</a>
+      </div>
+    </div>
+
+    <div class="resource-item">
+      <div class="resource-icon">📄</div>
+      <div>
+        <h4>CheXNet: Radiologist-Level Pneumonia Detection (Stanford)</h4>
+        <p>Rajpurkar et al., 2017. The paper that showed DenseNet121 could match radiologist performance on chest X-ray classification. The direct precursor to the work I did at AIMI.</p>
+        <a href="https://arxiv.org/abs/1711.05225" target="_blank">arxiv.org ↗</a>
+      </div>
+    </div>
+
+    <div class="resource-item">
+      <div class="resource-icon">📘</div>
+      <div>
+        <h4>CS231n: Convolutional Neural Networks for Visual Recognition (Stanford)</h4>
+        <p>Stanford's definitive course on computer vision. Lecture notes are freely available and go deep on CNNs, architectures, and training.</p>
+        <a href="https://cs231n.stanford.edu" target="_blank">cs231n.stanford.edu ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEDICAL AI -->
+  <div class="resource-group">
+    <h3>AI in Medicine</h3>
+
+    <div class="resource-item">
+      <div class="resource-icon">🏥</div>
+      <div>
+        <h4>Stanford AIMI Center</h4>
+        <p>The center where I completed my internship. Excellent source of papers, datasets, and open-source tools for medical AI research.</p>
+        <a href="https://aimi.stanford.edu" target="_blank">aimi.stanford.edu ↗</a>
+      </div>
+    </div>
+
+    <div class="resource-item">
+      <div class="resource-icon">📊</div>
+      <div>
+        <h4>CheXpert Plus Dataset</h4>
+        <p>The dataset used in my internship project. 223,462 chest radiographs with 14 pathology labels. Freely available for research.</p>
+        <a href="https://doi.org/10.57761/fzna-pm76" target="_blank">Redivis ↗</a>
+      </div>
+    </div>
+
+    <div class="resource-item">
+      <div class="resource-icon">📄</div>
+      <div>
+        <h4>Grad-CAM: Visual Explanations from Deep Networks</h4>
+        <p>Selvaraju et al., 2017. The paper behind gradient-weighted class activation mapping — a key technique for making medical AI interpretable.</p>
+        <a href="https://arxiv.org/abs/1610.02391" target="_blank">arxiv.org ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOOLS -->
+  <div class="resource-group">
+    <h3>Tools &amp; Environments</h3>
+
+    <div class="resource-item">
+      <div class="resource-icon">💻</div>
+      <div>
+        <h4>Google Colab</h4>
+        <p>Free GPU-backed Jupyter notebooks in the browser. The best way to start training models without needing your own hardware.</p>
+        <a href="https://colab.research.google.com" target="_blank">colab.research.google.com ↗</a>
+      </div>
+    </div>
+
+    <div class="resource-item">
+      <div class="resource-icon">🏆</div>
+      <div>
+        <h4>Kaggle</h4>
+        <p>Competitions, free datasets, and community notebooks. A great place to practice on real problems and see how others approach the same challenges.</p>
+        <a href="https://kaggle.com" target="_blank">kaggle.com ↗</a>
+      </div>
+    </div>
+
+    <div class="resource-item">
+      <div class="resource-icon">🤗</div>
+      <div>
+        <h4>Hugging Face</h4>
+        <p>Pretrained models, datasets, and the Transformers library. Increasingly relevant for vision-language models in medical AI.</p>
+        <a href="https://huggingface.co" target="_blank">huggingface.co ↗</a>
+      </div>
+    </div>
+
+    <div class="resource-item">
+      <div class="resource-icon">🔥</div>
+      <div>
+        <h4>PyTorch Documentation</h4>
+        <p>The deep learning framework used in the AIMI internship. Clear documentation and a strong community. Start with the official 60-minute blitz.</p>
+        <a href="https://pytorch.org/tutorials" target="_blank">pytorch.org/tutorials ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>Have a resource to suggest?</strong> If you've found something useful that belongs on this list, <a href="contact.html" style="color: var(--accent);">let me know</a>. Especially interested in good medical imaging papers and accessible Python ML tutorials.
+  </div>
+</div>
+
+</body>
+</html>

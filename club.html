@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Club — Leo Bouchon</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<script src="nav.js"></script>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">Monta Vista High School</p>
+    <h1>AI Club at Monta Vista</h1>
+    <p>Weekly sessions on deep learning, medical imaging, and real-world AI — open to all experience levels.</p>
+    <div style="margin-top: 28px;">
+      <a class="btn btn-primary" href="contact.html">Sign Up →</a>
+    </div>
+  </div>
+</section>
+
+<div class="main-content">
+
+  <!-- ABOUT THE CLUB -->
+  <div class="content-section">
+    <h2>What Is This Club?</h2>
+    <p>
+      The AI Club at Monta Vista is a student-run space to go deep on how artificial intelligence actually works — not just conceptually, but technically. Sessions are designed by a working AI researcher (me) and draw directly from real projects built at Stanford.
+    </p>
+    <p>
+      No prior experience is required. Whether you've never written a line of Python or you've already trained your first model, there's something here for you. We move at a pace that challenges beginners and adds depth for those already in the field.
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 24px;">
+      <div class="card" style="text-align: center; padding: 20px;">
+        <div style="font-size: 1.8rem; margin-bottom: 8px;">📅</div>
+        <h4 style="color: var(--navy); margin-bottom: 4px;">Weekly Sessions</h4>
+        <p style="font-size: 0.82rem; color: var(--text-muted);">[Day &amp; time TBD — update here]</p>
+      </div>
+      <div class="card" style="text-align: center; padding: 20px;">
+        <div style="font-size: 1.8rem; margin-bottom: 8px;">📍</div>
+        <h4 style="color: var(--navy); margin-bottom: 4px;">Location</h4>
+        <p style="font-size: 0.82rem; color: var(--text-muted);">Monta Vista High School<br>[Room TBD]</p>
+      </div>
+      <div class="card" style="text-align: center; padding: 20px;">
+        <div style="font-size: 1.8rem; margin-bottom: 8px;">🎓</div>
+        <h4 style="color: var(--navy); margin-bottom: 4px;">Open To All</h4>
+        <p style="font-size: 0.82rem; color: var(--text-muted);">No prerequisites — all grade levels welcome</p>
+      </div>
+      <div class="card" style="text-align: center; padding: 20px;">
+        <div style="font-size: 1.8rem; margin-bottom: 8px;">💬</div>
+        <h4 style="color: var(--navy); margin-bottom: 4px;">Format</h4>
+        <p style="font-size: 0.82rem; color: var(--text-muted);">Lecture + Q&amp;A + open discussion</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- PLANNED SESSIONS -->
+  <div class="content-section">
+    <h2>Planned Session Topics</h2>
+    <p>Each session covers one topic in depth, with real examples from the Stanford AIMI project where applicable. Sessions build on each other but are designed to be independently accessible.</p>
+
+    <ul class="session-list" style="margin-top: 24px;">
+      <li class="session-item">
+        <span class="session-num">01</span>
+        <div>
+          <h4>Introduction to Machine Learning</h4>
+          <p>What ML actually is, how supervised learning works, and why it's different from traditional programming. The landscape: regression, classification, neural networks.</p>
+        </div>
+      </li>
+      <li class="session-item">
+        <span class="session-num">02</span>
+        <div>
+          <h4>Convolutional Neural Networks (CNNs)</h4>
+          <p>How CNNs process images — convolution, pooling, feature maps. Why spatial structure matters and how CNNs learn to detect edges, textures, and objects.</p>
+        </div>
+      </li>
+      <li class="session-item">
+        <span class="session-num">03</span>
+        <div>
+          <h4>Transfer Learning</h4>
+          <p>Why training from scratch is rarely the right answer. ImageNet pretraining, feature extraction vs. fine-tuning, and when each approach is appropriate.</p>
+        </div>
+      </li>
+      <li class="session-item">
+        <span class="session-num">04</span>
+        <div>
+          <h4>DenseNet &amp; EfficientNet Deep Dive</h4>
+          <p>The architectures behind our Stanford project. Dense blocks, compound scaling, CBAM attention — what the papers say and what actually matters in practice.</p>
+        </div>
+      </li>
+      <li class="session-item">
+        <span class="session-num">05</span>
+        <div>
+          <h4>Medical Imaging &amp; the CheXpert Dataset</h4>
+          <p>How chest X-ray classification works, why it's hard (multi-label, noisy labels, class imbalance), and how we handled these challenges in the Stanford project.</p>
+        </div>
+      </li>
+      <li class="session-item">
+        <span class="session-num">06</span>
+        <div>
+          <h4>Evaluation Metrics — Beyond Accuracy</h4>
+          <p>Why accuracy is often meaningless in medicine. AUROC, sensitivity, specificity, F1, precision-recall curves, and how to interpret each in a clinical context.</p>
+        </div>
+      </li>
+      <li class="session-item">
+        <span class="session-num">07</span>
+        <div>
+          <h4>Model Interpretability &amp; Grad-CAM</h4>
+          <p>The black box problem in clinical AI. Gradient-weighted class activation mapping: how it works, how to generate heatmaps, and why it matters for trust in medical AI.</p>
+        </div>
+      </li>
+      <li class="session-item">
+        <span class="session-num">08</span>
+        <div>
+          <h4>AI Ethics in Medicine</h4>
+          <p>Dataset bias, health equity, FDA regulation, and the question of when AI should (and shouldn't) augment clinical decision-making. A discussion-heavy session.</p>
+        </div>
+      </li>
+      <li class="session-item">
+        <span class="session-num">09</span>
+        <div>
+          <h4>Student Project Showcase</h4>
+          <p>Members present their own AI explorations — Kaggle competitions, personal projects, research papers they've read. Open format, peer feedback.</p>
+        </div>
+      </li>
+      <li class="session-item">
+        <span class="session-num">10</span>
+        <div>
+          <h4>The Future of AI in Medicine</h4>
+          <p>Pathology AI, robotic surgery, drug discovery, genomics. Where the field is heading and what role students today can play in shaping it.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- SESSION ARCHIVE -->
+  <div class="content-section">
+    <h2>Session Archive</h2>
+    <p style="color: var(--text-muted);">
+      Past session slides and notes will be posted here after each meeting. Check back after our first session!
+    </p>
+    <div class="card" style="background: var(--off-white); text-align: center; padding: 40px;">
+      <p style="color: var(--text-muted); font-size: 0.9rem;">No sessions yet — archive coming soon.</p>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- SIGNUP -->
+  <div class="content-section">
+    <h2>Get Involved</h2>
+    <p>
+      Interested in joining, have a topic suggestion, or want to present at a session? Reach out directly — all are welcome.
+    </p>
+    <a class="btn btn-primary" href="contact.html" style="margin-top: 8px;">Contact Me →</a>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Pathology Detection — Leo Bouchon</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+<script src="../nav.js"></script>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">Research · Project 2</p>
+    <h1>AI Pathology Detection — Next Generation</h1>
+    <p>Extending the lung pathology model with improved architecture and broader pathology coverage.</p>
+    <div style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+      <span class="badge badge-progress" style="margin: 0;">In Progress</span>
+      <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--ice-dim);">Independent Research · 2026–Present</span>
+    </div>
+  </div>
+</section>
+
+<div class="main-content">
+  <a href="../research.html" class="back-link">← Back to Research</a>
+
+  <div class="info-box" style="margin-bottom: 40px;">
+    <strong>Work in progress.</strong> This page documents ongoing research. Details will be updated as the project develops. Current content reflects early-stage planning and preliminary decisions.
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="content-section">
+    <h2>Project Overview</h2>
+    <p>
+      Building directly on the DenseNet121 model developed during the Stanford AIMI internship, this project aims to improve upon that foundation in two key dimensions: <strong>model performance</strong> (pushing AUROC higher through architectural and training refinements) and <strong>pathology coverage</strong> (expanding detection beyond the initial 5-class subset).
+    </p>
+    <p>
+      The internship model achieved a strong mean AUROC of 0.9011, but known limitations — difficulty distinguishing visually similar pathologies, class imbalance sensitivity, and the absence of attention visualization — represent clear engineering and research opportunities.
+    </p>
+  </div>
+
+  <!-- GOALS -->
+  <div class="content-section">
+    <h2>Research Goals</h2>
+    <ul>
+      <li>Improve mean AUROC beyond 0.9011 through architectural and training changes</li>
+      <li>Expand the pathology set — targeting the full 14-label CheXpert taxonomy or a broader subset</li>
+      <li>Implement Grad-CAM visualization to produce interpretable, clinically meaningful attention maps</li>
+      <li>Address class imbalance more robustly (weighted loss, oversampling, or focal loss)</li>
+      <li>Explore ensemble approaches combining DenseNet and attention-based architectures</li>
+      <li>Validate generalization across external datasets beyond CheXpert</li>
+    </ul>
+  </div>
+
+  <!-- WHAT'S CHANGED -->
+  <div class="content-section">
+    <h2>Planned Improvements Over Project 1</h2>
+
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Project 1 (Baseline)</th>
+          <th>Project 2 (Target)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pathology classes</td>
+          <td>5</td>
+          <td>14 (full CheXpert)</td>
+        </tr>
+        <tr>
+          <td>AUROC target</td>
+          <td>0.9011</td>
+          <td>&gt; 0.91</td>
+        </tr>
+        <tr>
+          <td>Class imbalance handling</td>
+          <td>Standard BCE</td>
+          <td>Weighted BCE / focal loss</td>
+        </tr>
+        <tr>
+          <td>Attention visualization</td>
+          <td>None</td>
+          <td>Grad-CAM per class</td>
+        </tr>
+        <tr>
+          <td>Architecture</td>
+          <td>DenseNet121</td>
+          <td>DenseNet121 + possible hybrid</td>
+        </tr>
+        <tr>
+          <td>External validation</td>
+          <td>CheXpert only</td>
+          <td>NIH ChestX-ray14 (planned)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DATASET -->
+  <div class="content-section">
+    <h2>Dataset</h2>
+    <p>
+      This project will continue to use <strong>CheXpert Plus</strong> (223,462 radiographs, 64,725 patients) as the primary training corpus, targeting the full 14-pathology label set. The same U-Ones preprocessing policy will be applied, with additional investigation into alternative uncertainty handling strategies (U-Zeros, U-Ignore) to determine which yields the best balance of sensitivity and specificity per class.
+    </p>
+    <p>
+      External validation on <strong>NIH ChestX-ray14</strong> is planned as a generalization test — a critical step for any model intended for clinical screening use.
+    </p>
+  </div>
+
+  <!-- CURRENT STATUS -->
+  <div class="content-section">
+    <h2>Current Status &amp; Roadmap</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <p class="timeline-date">Completed</p>
+        <h4>Baseline established</h4>
+        <p>DenseNet121 at AUROC 0.9011 serves as the performance floor for this project.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-date">In Progress</p>
+        <h4>Grad-CAM implementation</h4>
+        <p>Implementing gradient-weighted class activation mapping to visualize which image regions drive classification decisions for each pathology.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-date">Planned</p>
+        <h4>Expand to 14-class detection</h4>
+        <p>Retrain on full CheXpert label taxonomy with refined imbalance handling.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-date">Planned</p>
+        <h4>Architecture experiments</h4>
+        <p>Evaluate DenseNet169, DenseNet201, and ensemble combinations with attention mechanisms.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-date">Planned</p>
+        <h4>External validation</h4>
+        <p>Test on NIH ChestX-ray14 to assess generalizability beyond the CheXpert distribution.</p>
+      </div>
+    </div>
+    <p style="margin-top: 24px; color: var(--text-muted); font-size: 0.9rem;">
+      Results and detailed methodology will be added to this page as the project progresses. Check back or <a href="../contact.html" style="color: var(--accent);">reach out</a> if you'd like to follow along.
+    </p>
+  </div>
+
+  <!-- PREV / NEXT -->
+  <div class="prev-next">
+    <a href="lung-pathology.html">
+      <span class="pn-label">← Previous Project</span>
+      <span class="pn-title">Multi-Disease Lung Pathology Detection</span>
+    </a>
+    <div></div>
+  </div>
+</div>
+
+</body>
+</html>

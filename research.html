@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research — Leo Bouchon</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<script src="nav.js"></script>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">Research Portfolio</p>
+    <h1>AI for Medical Imaging</h1>
+    <p>Deep learning models for multi-disease detection from clinical radiographs — built at the Stanford AIMI Center and beyond.</p>
+  </div>
+</section>
+
+<div class="main-content">
+
+  <!-- MISSION -->
+  <div class="content-section">
+    <h2>Research Mission</h2>
+    <p>
+      My research focuses on applying convolutional neural networks and transfer learning to medical image classification, with a particular emphasis on chest radiography. The clinical challenge is significant: many thoracic conditions share overlapping visual and symptomatic features, making accurate multi-label classification both medically valuable and technically demanding.
+    </p>
+    <p>
+      Each project below follows a rigorous pipeline — from dataset preprocessing and model architecture selection through training, evaluation, and clinical interpretation of results. I document not just what worked, but what didn't, and why.
+    </p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- PROJECT CARDS -->
+  <p style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px;">Projects</p>
+
+  <!-- Project 1 -->
+  <div class="card" style="margin-bottom: 24px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: start;">
+    <div>
+      <span class="badge badge-complete">Completed · Stanford AIMI Internship</span>
+      <p class="card-eyebrow">Chest X-Ray · CheXpert Plus · DenseNet121</p>
+      <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: var(--navy); margin-bottom: 10px;">Multi-Disease Lung Pathology Detection</h3>
+      <p style="color: var(--text-muted); margin-bottom: 16px;">
+        A DenseNet121 classifier trained on 223,462 chest radiographs to simultaneously detect 5 thoracic pathologies: Atelectasis, Cardiomegaly, Consolidation, Edema, and Pleural Effusion. Achieved a mean validation AUROC of 0.9011 — a 13.3% improvement over the DenseNet121 baseline.
+      </p>
+      <div class="tags" style="margin-bottom: 18px;">
+        <span class="tag">DenseNet121</span>
+        <span class="tag">Multi-label</span>
+        <span class="tag">CheXpert Plus</span>
+        <span class="tag">AUROC 0.90</span>
+        <span class="tag">Early Stopping</span>
+      </div>
+      <div style="display: flex; gap: 28px; margin-bottom: 20px; flex-wrap: wrap;">
+        <div><span style="font-family: var(--font-mono); font-size: 1.1rem; color: var(--accent-dark); font-weight: 600;">0.9011</span><br><span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em;">Mean AUROC</span></div>
+        <div><span style="font-family: var(--font-mono); font-size: 1.1rem; color: var(--accent-dark); font-weight: 600;">0.8108</span><br><span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em;">Mean Sensitivity</span></div>
+        <div><span style="font-family: var(--font-mono); font-size: 1.1rem; color: var(--accent-dark); font-weight: 600;">0.8060</span><br><span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em;">Mean Specificity</span></div>
+        <div><span style="font-family: var(--font-mono); font-size: 1.1rem; color: var(--accent-dark); font-weight: 600;">223K</span><br><span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em;">Radiographs</span></div>
+      </div>
+      <a class="btn btn-primary" href="research/lung-pathology.html">View Full Project →</a>
+    </div>
+  </div>
+
+  <!-- Project 2 -->
+  <div class="card" style="margin-bottom: 24px;">
+    <span class="badge badge-progress">In Progress</span>
+    <p class="card-eyebrow">Chest X-Ray · CheXpert Plus</p>
+    <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: var(--navy); margin-bottom: 10px;">AI Pathology Detection — Next Generation</h3>
+    <p style="color: var(--text-muted); margin-bottom: 16px;">
+      Building on the internship model, this project extends pathology coverage and refines training methodology. Targeting higher AUROC through architectural improvements and more sophisticated handling of class imbalance and label noise.
+    </p>
+    <div class="tags" style="margin-bottom: 18px;">
+      <span class="tag">Work in Progress</span>
+      <span class="tag">Chest X-Ray</span>
+      <span class="tag">Extended Pathologies</span>
+    </div>
+    <a class="btn btn-primary" href="research/ai-pathology.html">View Project →</a>
+  </div>
+
+  <!-- Future work -->
+  <div class="card" style="margin-bottom: 24px; background: var(--off-white);">
+    <span class="badge badge-soon">Coming Soon</span>
+    <p class="card-eyebrow">Future Work</p>
+    <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: var(--navy); margin-bottom: 10px;">New Modalities &amp; Pathologies</h3>
+    <p style="color: var(--text-muted); margin-bottom: 12px;">
+      Future projects will extend beyond chest radiography into other imaging modalities (CT, MRI, histology slides) and clinical domains. Each new model will be documented here with the same depth as completed projects.
+    </p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- POSTER -->
+  <div class="content-section">
+    <h2>Research Poster — Stanford AIMI 2026</h2>
+    <p>
+      Co-authored with teammates Ashraya Siruvole, Amelie Rhew, Sarah Zhou, and Veda Kumar, under the mentorship of Cally Lin and Dr. Curtis Langlotz at the Stanford AIMI Center. This poster presents our full methodology and results comparing DenseNet121 and EfficientNetB0 for multi-disease chest X-ray screening.
+    </p>
+    <div class="poster-frame">
+      <embed src="../AIMI__Group_3_-_Poster.pdf" type="application/pdf" />
+    </div>
+    <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 8px;">
+      If the PDF doesn't render above, <a href="../AIMI__Group_3_-_Poster.pdf" target="_blank" style="color: var(--accent);">open it here ↗</a>
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>
