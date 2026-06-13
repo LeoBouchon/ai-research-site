@@ -33,15 +33,19 @@
     <p>© 2026 Leo Bouchon · Monta Vista High School · Stanford AIMI Intern</p>
   </footer>`;
 
-  // Inject nav before body content
+  // Inject nav immediately (script is at top of body, so this lands first)
   document.body.insertAdjacentHTML('afterbegin', navHTML);
-  document.body.insertAdjacentHTML('beforeend', footerHTML);
 
   // Highlight active nav link
   document.querySelectorAll('.nav-links a').forEach(a => {
-    if (a.href === window.location.href || 
+    if (a.href === window.location.href ||
         (a.href.includes(window.location.pathname) && window.location.pathname !== '/')) {
       a.classList.add('active');
     }
+  });
+
+  // Defer footer until full DOM is parsed so it lands at the true end
+  document.addEventListener('DOMContentLoaded', function() {
+    document.body.insertAdjacentHTML('beforeend', footerHTML);
   });
 })();
