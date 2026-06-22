@@ -152,6 +152,7 @@ footer .footer-links { display: flex; justify-content: center; gap: 28px; margin
   line-height: 1.15;
   color: var(--white);
   margin-bottom: 24px;
+  text-align: center;
 }
 
 .hero h1 em {
